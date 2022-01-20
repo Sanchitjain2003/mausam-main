@@ -1,0 +1,36 @@
+
+    {% extends "index.html" %}
+    {% block content %}
+    {% for key,val in plots.items() %}
+    <div class="chart" id="graph">
+        <script>
+
+            var graphs = {{val | safe}};
+            for (let index = 0; index < 6; index++) {
+                Plotly.plot('graph',graphs,{});
+                
+            }
+            
+        </script>
+    </div>
+    {% endfor %}
+    <table class="w-screen">
+        <th>Date</th>
+        <th>Max. Temp</th>
+        <th>Min. Temp</th>
+        <th>Precipitation</th>
+        <th>Dew Point</th>
+        <th>Heat Index</th>
+        <th>Relative Humidity</th>
+        {% for key,parent_dict_item in data.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            {% for key2, nested_value in parent_dict_item.items() %}
+                <td>{{ nested_value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>ML Model Connected</h1>
+    {% endblock %}
