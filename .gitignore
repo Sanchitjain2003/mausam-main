@@ -1,1 +1,2 @@
-*.pkl
+./models/Predicting Humidity/nHRandomForest.pkl
+./models/Predicting Temperature/nTRandomForest.pkl
